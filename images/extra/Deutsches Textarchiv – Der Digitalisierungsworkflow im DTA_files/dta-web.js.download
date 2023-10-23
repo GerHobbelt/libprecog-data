@@ -1,0 +1,345 @@
+function toggleTOC() {
+  $('.dta-toc-item').each( function(idx) {
+    var el = $(this);
+    if ( el.attr( 'data-depth' ) > 1 ) {
+      el.toggle()
+    }
+  });
+}
+
+const getMobileOS = () => {
+  const ua = navigator.userAgent
+  if (/android/i.test(ua)) {
+    return "Android"
+  }
+  else if (/iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    return "iOS"
+  }
+  return "Other"
+}
+
+$(document).ready( function() {
+  const os = getMobileOS()
+
+  /* collapse TOCs */
+  $('.dta-toc-item').each( function(idx) {
+    var el = $(this);
+    if ( el.attr( 'data-depth' ) > 1 ) {
+      el.hide();
+    }
+  });
+
+  // fontsize
+  if ( typeof(fontsize) != 'undefined' ) {
+    $('#text-container').css( 'font-size', parseInt(fontsize) + 'px' );
+  }
+
+  $('.ref[target^="#f"]').each( function(idx) {
+    var el = $(this);
+    var target = el.attr('target').replace(/#f0*/, '');
+    if ( !target )
+      return;
+    var loc = window.location.href;
+    var newloc = loc.replace(/(\?p=)\d+/, '?p=' + target);
+    el.html( '<a href="' + newloc + '">' + el.html() + '</a>' );
+  });
+    
+  /* Gutzkow */
+  $('.ref[target*="BrN3E.htm"]').each( function(idx) {
+    var el = $(this);
+    var target = 'http://projects.exeter.ac.uk/gutzkow/Gutzneu/gesamtausgabe/BrN/' + el.attr('target');
+    el.html( '<a href="' + target + '" title="Anmerkungen der Gutzkow-Edition">' + el.html() + '</a>' );
+  });
+    
+  $('.ref[target*="BrN4E.htm"]').each( function(idx) {
+    var el = $(this);
+    var target = 'http://projects.exeter.ac.uk/gutzkow/Gutzneu/gesamtausgabe/BrN/' + el.attr('target');
+    el.html( '<a href="' + target + '" title="Anmerkungen der Gutzkow-Edition">' + el.html() + '</a>' );
+  });
+    
+  $('.ref[target*="NSer2E.htm"]').each( function(idx) {
+    var el = $(this);
+    var target = 'http://projects.exeter.ac.uk/gutzkow/Gutzneu/gesamtausgabe/NSer/' + el.attr('target');
+    el.html( '<a href="' + target + '" title="Anmerkungen der Gutzkow-Edition">' + el.html() + '</a>' );
+  });
+    
+  $('.ref[target*="NSer3E.htm"]').each( function(idx) {
+    var el = $(this);
+    var target = 'http://projects.exeter.ac.uk/gutzkow/Gutzneu/gesamtausgabe/NSer/' + el.attr('target');
+    el.html( '<a href="' + target + '" title="Anmerkungen der Gutzkow-Edition">' + el.html() + '</a>' );
+  });
+    
+  $('.ref[target*="ZgZuE.htm"]').each( function(idx) {
+    var el = $(this);
+    var target = 'http://projects.exeter.ac.uk/gutzkow/Gutzneu/gesamtausgabe/Zg/' + el.attr('target');
+    el.html( '<a href="' + target + '" title="Anmerkungen der Gutzkow-Edition">' + el.html() + '</a>' );
+  });
+  /* Ende Gutzkow */
+    
+  $('.ref[target^="http"]').each( function(idx) {
+    var el = $(this);
+    el.html( '<a href="' + el.attr('target') + '" title="Link zu externer Seite">' + el.html() + '</a>' );
+  });
+
+  // page switcher
+  $('#pageswitch').change( function() {
+    var page = jQuery(this).val();
+    var href = window.location.href;
+    href = href.replace(/([;&?])p=[0-9]+/, '$1'); // remove the ?p=... from href
+    href = href.replace(/[;&?]$/, '' );
+    href = href.replace(/\?[&;]/, '?' );
+    if ( href.search(/\?/) > -1 ) {
+      window.location.href = href + ';p=' + page;
+    }
+    else {
+      window.location.href = href + '?p=' + page;
+    }
+  });
+
+  // switch between text, XML, and CAB view
+  if ( typeof(def_view) != 'undefined' ) {
+    switch (def_view) {
+      case 'norm':
+        shownorm();
+        break;
+      case 'plain':
+        showplain();
+        break;
+      case 'text':
+        showtext();
+        break;
+      case 'xml':
+        showxml();
+        break;
+      case 'cab':
+        showcab();
+        break;
+      case 'cab2':
+        showcab2();
+        break;
+    }
+  }
+
+  if ( os != 'iOS' ) {
+    // make text column resizable
+    jQuery('#col-2').resizable({
+      helper: "ui-resizable-helper",
+      handles: 'e',
+      minWidth: 400,
+      maxWidth: 900,
+      stop: function(event, ui) {
+        jQuery.get( base + "set_pref", { field: 'textwidth', value: jQuery('#col-2').width(), 'prevent_caching': (new Date()).getTime() } );
+      }
+    });
+    
+    jQuery.get( base + "get_pref", { field: 'textwidth', 'prevent_caching': (new Date()).getTime() }, function (data) {
+      if ( data ) {
+        jQuery('#col-2').width(data);
+      } 
+    });
+
+    jQuery('#col-1').resizable({
+      helper: "ui-resizable-helper",
+      handles: 'e',
+      minWidth: 400,
+      maxWidth: 900,
+      stop: function(event, ui) {
+        jQuery.get( base + "set_pref", { field: 'scanwidth', value: jQuery('#col-1').width(), 'prevent_caching': (new Date()).getTime() } );
+        jQuery('#scan').width( jQuery('#col-1').width() );
+        jQuery('#scan').iviewer({
+          src: 'https://media.dwds.de/dta/images/' + dirname + '/' + dirname + '_' + fpage + '_800px.jpg',
+          zoom: 'fit'
+        });
+        jQuery('#scan img').width( jQuery('#col-1').width() );
+        jQuery('#scan img').height( 'auto' );
+      }
+    });
+  }
+
+  $('#text-container').height( $('#scan').height() );
+
+  /* revert clickability on formulas */
+  $('.dta-formula').off( 'click' );
+  $('.dta-formula').css( 'cursor', 'default' );
+
+  if ( dirname.search(/^(baumgart_poetik_1887|beyer_poetik01_1882|beyer_poetik02_1882|beyer_poetik02_1883|beyer_poetik03_1884|borinski_poetik_1895|clodius_poetik01_1804|clodius_poetik02_1804|dilthey_poetik_1887|engel_poetik_1806|gottschall_poetik_1858|kleinpaul_poetik_1843|koerner_poetik_1949|lehmann_poetik_1908|mueller_poetik_1914|petersen_poetik_1944|poelitz_poetik_1825|scherer_poetik_1888|seidler_poetik_1959|staiger_poetik_1946|vischer_poetik_1857|wackernagel_poetik_1873|wehrli_poetik_1951|wolff_poetik_1899|rose_ural01_1837|rose_ural02_1842)$/) > -1 ) {
+    $('.dta-lb-n').remove();
+  }
+
+  /* Autocompletion Metadata Search */
+  $('#main-search-field, .main-search-field').autocomplete({
+    source: function(req, res) {
+      $.get(base + 'search/ac', { field: 'bibl', term: req.term }, res);
+    },
+    select: function(event, ui) {
+      $('#main-search-field, .main-search-field').val( ui.item.value );
+      $('#dta-index-form').submit();
+    },
+    minLength: 3
+  });
+  $('input[name="in"]').change( function(e) {
+    var el = $(this);
+    if ( el.val() == 'metadata' ) {
+      $('#main-search-field, .main-search-field').autocomplete( 'enable' );
+    }
+    else {
+      $('#main-search-field, .main-search-field').autocomplete( 'disable' );
+    }
+  });
+});
+
+function resetPrefs() {
+  jQuery.ajax({ type: 'GET', async: false, url: base + "set_pref", data: { field: 'scanwidth', value: null } });
+  jQuery.ajax({ type: 'GET', async: false, url: base + "set_pref", data: { field: 'textwidth', value: null } });
+  jQuery.ajax({ type: 'GET', async: false, url: base + "set_pref", data: { field: 'fontsize', value: null } });
+  jQuery.ajax({ type: 'GET', async: false, url: base + "set_pref", data: { field: 'view', value: null } });
+  location.reload(true);
+  return false;
+}
+
+/* ------------------------------------- */
+
+function showplain() {
+  $('#plaintext').show();
+  $('#normtext, #htmltext, #xmltext, #cabtext, #cab2text, #cabinfo').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#plain-view-label img').css({opacity:0.2});
+  setpref('plain');
+}
+
+function showtext() {
+  $('#htmltext').show();
+  $('#normtext, #plaintext, #xmltext, #cabtext, #cab2text, #cabinfo').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#text-view-label img').css({opacity:0.2});
+  setpref('text');
+}
+
+function shownorm() {
+  $('#normtext').show();
+  $('#plaintext, #xmltext, #htmltext, #cabtext, #cab2text, #cabinfo').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#norm-view-label img').css({opacity:0.2});
+  setpref('norm');
+}
+
+function showxml() {
+  $('#xmltext').show();
+  $('#normtext, #plaintext, #htmltext, #cabtext, #cab2text, #cabinfo').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#xml-view-label img').css({opacity:0.2});
+  setpref('xml');
+}
+
+function showcab2() {
+  $('#cab2text').show();
+  $('#normtext, #plaintext, #htmltext, #xmltext, #cabtext, #cabinfo').hide();
+  if ( !havecab2 ) {
+    $('#cab2text').html( 'hole CAB-Ausgabe ...' );
+    $('body').css( 'cursor', 'progress' );
+    $('#cab2text').load( base + '/book/cab/' + book + '/' + page + '?pos=1' );
+    havecab2 = 1;
+    $('body').css( 'cursor', 'default' );
+  }
+  $('#view-switch img').css({opacity:1});
+  $('#cab2-view-label img').css({opacity:0.2});
+  setpref('cab2');
+}
+
+function showedit() {
+  $('#edittext').show();
+  $('#normtext, #plaintext, #htmltext, #xmltext, #cabtext, #cab2text, #cabinfo').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#edit-view-label img').css({opacity:0.2});
+  setpref('edit');
+}
+
+/*
+$('.sttspos').live( 'mouseover', function() {
+  var tag   = $(this).attr('tag');
+  var lemma = $(this).attr('lemma');
+  $('#stts .tag').html( tag );
+  $('#stts .lemma').html( lemma );
+  $('#stts').show();
+});
+$('.sttspos').live( 'mouseout', function() {
+  $('#stts').hide();
+});*/
+
+function larger() {
+  var elm = $('#text-container');
+  var size = parseInt($('#text-container').css( 'fontSize' ));
+  elm.css( 'fontSize', size + 2 + 'px' );
+  $.get( base + "set_pref", { field: 'fontsize', value: size + 2, 'prevent_caching': (new Date()).getTime() } );
+}
+
+function smaller() {
+  var elm = $('#text-container');
+  var size = parseInt($('#text-container').css( 'fontSize' ));
+  elm.css( 'fontSize', size - 2 + 'px' );
+  $.get( base + "set_pref", { field: 'fontsize', value: size - 2, 'prevent_caching': (new Date()).getTime() } );
+}
+
+function showcab() {
+  $('#cabtext,#cabinfo').show();
+  $('#plaintext, #normtext, #htmltext, #xmltext, #cab2text, #edittext').hide();
+  $('#view-switch img').css({opacity:1});
+  $('#cab-view-label img').css({opacity:0.2});
+  if ( !havecab ) {
+    $('#cabtext').html( 'hole CAB-Ausgabe ...' );
+    $('body').css( 'cursor', 'progress' );
+    $('#cabtext').load( base + '/book/cab/' + book + '/' + page, function() {
+      $('span[mapclass]').each( function() {
+        var elm = $(this);
+
+        if ( elm.parent().hasClass('cab-fm') ) {
+          return;
+        }
+        if ( elm.attr('tag') == 'FM' ) {
+          elm.addClass('cab-fm');
+          return;
+        }
+
+        var mapclass = elm.attr( 'mapclass' );
+        if ( mapclass.search(/\+id,\+xid,\+msafe,\+moota,-mootxy/) > -1 || elm.attr('wold') == elm.attr('wnew') ) {
+          elm.css( 'background', 'default' );
+        }
+        else if ( mapclass.search(/-id,\+xid,\+msafe,\+moota,-mootxy/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/\+exlex.*\+moota,-mootxy/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/-exlex.*\+moota,-mootxy/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/\+exlex.*-moota/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/-exlex.*-moota/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/\+mootxy/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/-id/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        else if ( mapclass.search(/-xid/) > -1 ) {
+          elm.css( 'background', '#ddd' );
+        }
+        elm.attr( 'title', elm.attr('wold') );
+      });
+    });
+    havecab = 1;
+    $('body').css( 'cursor', 'default' );
+  }
+
+  setpref('cab');
+}
+
+/* ---------------------------------- */
+
+function setpref(val) {
+  $.get( base + "set_pref", { field: 'view', value: val, 'prevent_caching': (new Date()).getTime() } );
+}

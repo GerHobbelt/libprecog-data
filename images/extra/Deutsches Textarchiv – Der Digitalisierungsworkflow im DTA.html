@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0076)https://www.deutschestextarchiv.de/doku/workflow#Die_Volltextdigitalisierung -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA</title>
+  <!--<base href="https://www.deutschestextarchiv.de/">--><base href=".">
+
+  <link rel="alternate" type="application/atom+xml" title="Deutsches Textarchiv: Neue Werke" href="https://www.deutschestextarchiv.de/api/recent">
+  <link rel="alternate" type="application/atom+xml" title="Deutsches Textarchiv: Neuigkeiten" href="https://www.deutschestextarchiv.de/api/news">
+
+  
+    <link rel="shortcut icon" href="https://www.deutschestextarchiv.de/static/images/favicon.ico" type="image/x-icon">
+  
+
+  <link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery-ui-1.8.1.custom.css">
+  <script type="text/javascript" defer="" async="" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/piwik.js.download"></script><script src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery-1.8.2.min.js.download" type="text/javascript"></script>
+  <!-- <script src="static/jquery/jquery-3.2.0.min.js" type="text/javascript"></script> -->
+
+  <script src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/menu.js.download" type="text/javascript"></script>
+  <script src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/dta-web.js.download" type="text/javascript"></script>
+
+  <script type="text/javascript" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery-ui-1.8.24.custom.min.js.download"></script>
+  <script type="text/javascript" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery.mousewheel.min.js.download"></script>
+  <script type="text/javascript" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/github.jquery.iviewer.min.js.download"></script>
+  <script type="text/javascript" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery.twinkle-0.2.min.js.download"></script>
+
+  
+  <script src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/highcharts.js.download" type="text/javascript"></script>
+  <script src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/exporting.js.download" type="text/javascript"></script>
+  
+
+  <link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/dtaq.css">
+  
+  
+    <link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/dta.css">
+  
+  <link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/dta-web.css">
+  
+  <link href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/xmlsh.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" media="print, embossed" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/print.css">
+  <link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/jquery.iviewer.css">
+
+  
+
+  <script type="text/javascript">
+    base    = 'https://www.deutschestextarchiv.de/';
+    book    = '';
+    dirname = '';
+    page    = '';
+    fpage   = '';
+  </script>
+
+  
+
+<link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/slick.css">
+<link rel="stylesheet" type="text/css" href="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/slick-theme.css">
+
+  
+</head>
+
+<body>
+
+<noscript>
+  <div style="border:1px solid red; padding:10px; margin:10px; color:red; background:#fff">
+    Diese Webseite nutzt Javascript, um Inhalte benutzerfreundlich darstellen zu können.
+    Um also alle Funktionen nutzen zu können, sollten Sie Javascript in ihrem Browser anschalten.
+  </div>
+</noscript>
+
+
+
+<div id="main" style="min-width:1200px">
+  <div id="topnav">
+    <table width="100%">
+      <tbody><tr>
+        <td style="text-align:left;padding-left:7px">
+          <a href="https://www.deutschestextarchiv.de/dtaq">Anmelden (DTAQ)</a>
+        </td>
+        <td style="text-align:right">
+          <span style="font-family:Arial;font-size:8pt">
+            <a href="https://www.dwds.de/">DWDS</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="http://www.dlexdb.de/">dlexDB</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="https://clarin.bbaw.de/">CLARIN-D</a>
+          </span>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  <div id="nav">
+    <table width="100%">
+      <tbody><tr>
+        
+          <td><a href="https://www.deutschestextarchiv.de/"><img src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/logo.png" alt="Deutsches Textarchiv – Logo" title="Deutsches Textarchiv"></a></td>
+        
+        <td>
+          <ul id="dtanav">
+            <li>
+              <a href="https://www.deutschestextarchiv.de/list">Texte ▼</a>
+              <ul>
+                <li><a href="https://www.deutschestextarchiv.de/list">Verfügbar</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/list/timeline">Zeitleiste</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/nutzungsbedingungen">Nutzungsbedingungen</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/download">Download</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.deutschestextarchiv.de/doku/ueberblick">Projekt ▼</a>
+              <ul>
+                <li><a href="https://www.deutschestextarchiv.de/doku/ueberblick">Projektüberblick</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/team">Team</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/news">Aktuelles</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/veranstaltungen">Veranstaltungen</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/kooperationen">Kooperationen</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/publikationen">Publikationen</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/impressum#kontakt">Kontakt</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.deutschestextarchiv.de/doku">Dokumentation ▼</a>
+              <ul>
+                <li><a href="https://www.deutschestextarchiv.de/doku/leitlinien">DTA-Leitlinien</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/textauswahl">DTA-Textauswahl</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/textquellen">Textquellen</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/workflow">Digitalisierungsworkflow</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/dtae">DTAE</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/richtlinien">DTA-Richtlinien zur Texterfassung</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/basisformat">DTA-Basisformat</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/DDC-suche_hilfe">Linguistische Suche</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku/software">Software</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/api">APIs</a></li>
+                <li><a href="https://www.deutschestextarchiv.de/doku">Hilfe</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://www.deutschestextarchiv.de/doku/impressum">Impressum</a>
+            </li>
+          </ul>
+          
+          
+            <form method="get" action="https://www.deutschestextarchiv.de/search" id="ssearchbox">
+              <input name="q" style="width:250px" type="text" class="main-search-field ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+              <input value="suchen" type="submit"><a href="https://www.deutschestextarchiv.de/doku/DDC-suche_hilfe" class="small">Hilfe</a>
+              <br>
+              <span style="white-space:nowrap" title="Suche in den bibliographischen Angaben der im DTA enthaltenen Werke"><input type="radio" id="in-metadata" value="metadata" name="in">&nbsp;<label for="in-metadata">in den Titeldaten</label></span>
+              <span style="white-space:nowrap" title="Suche in den Volltexten der im DTA enthaltenen Werke"><input name="in" value="text" id="in-text" checked="checked" type="radio">&nbsp;<label for="in-text">im Korpus</label></span>
+              <span style="white-space:nowrap" title="Suche in beschreibenden Texten auf dieser Webseite (Dokumentation etc.)"><input name="in" type="radio" id="in-dtadoc" value="dtadoc">&nbsp;<label for="in-dtadoc">in der Dokumentation</label></span>
+            </form>
+          
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div id="content" class="web">
+    
+      <table width="100%">
+        <tbody><tr>
+          <td class="bf-toc" style="padding-right: 20px; width: 250px;"></td>
+          <td id="content-middle" class="help-content"><h1 id="der_digitalisie">Der Digitalisierungsworkflow im DTA</h1>
+
+<h2 id="Die_Bilddigitalisierung">1&nbsp;&nbsp;Die Bilddigitalisierung<div class="back-to-top"><a href="https://www.deutschestextarchiv.de/doku/workflow#top">nach oben</a></div></h2> 
+
+<p>
+  Um die historischen Drucke zu digitalisieren, kooperiert das DTA mit
+  mehreren großen Bibliotheken, die sich bereit erklärt haben, die
+  entsprechenden Exemplare aus ihren Beständen zur Digitalisierung zur
+  Verfügung zu stellen. Die Digitalisierung wird zum kleineren Teil in den
+  Räumen der BBAW vorgenommen, der größere Teil wird von den Bibliotheken
+  selbst angefertigt.
+</p>
+
+<h2 id="Die_Volltextdigitalisierung">2&nbsp;&nbsp;Die Volltextdigitalisierung<div class="back-to-top"><a href="https://www.deutschestextarchiv.de/doku/workflow#top">nach oben</a></div></h2> 
+
+<p>
+  Die Bilddigitalisate bilden die Grundlage für die Erstellung der Volltexte.
+  Die Bilddateien werden für die Erfassung vorbereitet, indem die Strukturen
+  kenntlich gemacht werden (siehe die Erläuterungen zur <a href="https://www.deutschestextarchiv.de/doku/software#ZOT">Makrostrukturierung der Bilddigitalisate (ZOT)</a>).
+</p>
+
+<p>
+  Die Texterfassung erfolgt auf der Grundlage der Bilddigitalisate nach den
+  <a href="https://www.deutschestextarchiv.de/doku/richtlinien">DTA-Erfassungsrichtlinien</a>.
+  In der Regel werden die Texte manuell durch Nicht-Muttersprachler im
+  <span class="tooltip" title="Doppelte Texterfassung mit nachträglichem Vergleich der Fassungen hinsichtlich eventueller Abweichungen"><em>Double Keying</em>-Verfahren</span>
+  erfasst und weisen daher eine sehr hohe Erfassungsgenauigkeit auf
+  der Zeichenebene auf. Ein geringerer Teil der bisher
+  digitalisierten Texte wurde durch eine Texterkennungssoftware
+  (<abbr title="Optical Character Recognition">OCR</abbr>) mit 
+  anschließender manueller Nachkorrektur erstellt.
+</p>
+
+<p>
+  Um die Qualität der Volltexte noch weiter zu erhöhen, werden Verfahren zur
+  Qualitätssicherung angewandt. Näheres dazu finden Sie unter
+  <a href="https://www.deutschestextarchiv.de/doku/dtaq">DTA-Qualitätssicherung</a>.
+</p>
+
+<p>
+  Im Zuge der Texterfassung werden die Texte mittels eines einfachen
+  XML-Formats strukturell angereichert. Dabei werden die Grundstruktur des
+  Textes (d. h. in der Regel Kapitel, Unterkapitel, Absätze) sowie
+  typographische Hervorhebungen ausgezeichnet, weiterhin auch typographische
+  Bestandteile wie Kolumnentitel, Bogensignaturen und Ähnliches. Die
+  vereinfachten Annotationen werden im Nachhinein automatisch in das <a href="https://www.deutschestextarchiv.de/doku/basisformat">DTA-Basisformat</a>
+  überführt. Schwierigere strukturelle Fälle werden manuell nachkorrigiert.
+</p>
+
+<p>
+  Die publizierten Volltexte sind über das Internet frei zugänglich und stehen
+  zum Download zur Verfügung. Die Texte sind sowohl für Sprachwissenschaftler
+  als auch für Philologen vielfältig nachnutzbar.
+</p>
+
+<h2 id="Die_linguistische_Erschliessung_der_Texte">3&nbsp;&nbsp;Die linguistische Erschließung der Texte<div class="back-to-top"><a href="https://www.deutschestextarchiv.de/doku/workflow#top">nach oben</a></div></h2> 
+
+<p>
+  Die DTA-Volltexte werden mit computerlinguistischen Hilfsmitteln
+  aufbereitet. Dabei werden automatische Verfahren zur Tokenisierung,
+  Lemmatisierung und zum <abbr title="Part of Speech">POS</abbr>-Tagging angewandt. Anschließend erfolgt die Indizierung durch
+  die linguistische Suchmaschine <a href="https://www.dwds.de/d/korpussuche">DDC</a>,
+  die für das Projekt <a href="https://www.dwds.de/">Digitales Wörterbuch der Deutschen Sprache</a>
+  entwickelt wurde. Dies ermöglicht komplexe Suchanfragen und
+  die Recherche nach flektierten Formen (z. B. die Anfrage nach „sprach“ liefert u. a. die Ergebnisse für
+  „sprechen“, „spricht“, „gesprochen“). Darüber hinaus kann der Nutzer die
+  historischen, orthographisch uneinheitlichen Texte so durchsuchen, dass
+  graphematische Varianten für ein Wort (z. B. „Kleid“: „Kleidt“, „Kleydt“, „Cleyd“,
+  „Cleit“ etc.) mit einer einzigen Anfrage gefunden werden.
+</p>
+</td>
+          <td></td>
+        </tr>
+      </tbody></table>
+    
+    
+      <p style="font-size:.8em; text-align:right; font-style:italic; clear:both">Stand dieser Seite: Thu May  5 11:31:04 2022</p>
+
+<style type="text/css">
+  .bf-toc    { font-size:.9em }
+  .bf-toc p  { font-weight:bold; padding-top:20px }
+  .bf-toc ul { list-style-type:none; padding:10px; background:#FFFEF9 }
+  .bf-toc li { margin-bottom:10px }
+
+  #workshop2013 tr:nth-child(2n+1) { background:#fff }
+  #workshop2013 .head { font-size:1em !important; background:#f0f0f0 !important; text-align:left }
+  #workshop2013 .time { white-space:nowrap }
+</style>
+
+<script>
+  jQuery(document).ready( function() {
+    var toc  = jQuery('.bf-toc');
+    var prev = jQuery('#content-middle').prev();
+    prev.css( 'padding-right', '20px' );
+    prev.css( 'width', '250px' );
+    prev.attr( 'class', 'bf-toc' );
+    prev.html( toc.html() );
+    toc.html( '' );
+  });
+
+  jQuery('code, pre').each( function() {
+    jQuery(this).load( 'https://www.deutschestextarchiv.de/util/xmlsh', { code: jQuery(this).html() } );
+  });
+
+  jQuery(document).ready(function() {
+    jQuery('.help-content h2, .help-content h3').append( '<div class="back-to-top"><a href="https://www.deutschestextarchiv.de/doku/workflow#top">nach oben</a></div>' );
+
+    var id_idx = 1;
+    jQuery('.phase1').each( function() {
+      var el = jQuery(this);
+      el.css( 'display', 'none' );
+      el.attr( 'id', 'phase1-' + id_idx );
+      el.before( "<p style='font-style:italic' class='noprint'><a href='#' onclick='jQuery(\"#phase1-" + id_idx + "\").fadeToggle(); return false'>Hinweis: Für diesen Abschnitt gibt es eine abweichende Regelung, Texte der Phase 1 im DTA betreffend.</a></p>" );
+      el.prepend('<div class="phasex-nb" style="height:' + el.height() + 'px">DTA Phase 1</div>');
+      id_idx++;
+    });
+
+  });
+
+  jQuery('#workshop2013 .head').before( '<tr><td colspan="3">&nbsp;</td></tr>' );
+  jQuery('#workshop2013 .subhead').before( '<tr><td colspan="3" style="font-size:.7em">&nbsp;</td></tr>' );
+
+  $('tt[data-lang="ddc"]').each( function() {
+    var el = $(this);
+    var ddc = $(this).html().replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    el.html( '<a href="' + base + 'search?in=text;q=' + encodeURIComponent(ddc) + '">' + el.html() + '</a>' );
+  });
+    
+  if (window.location.hash) {
+    jQuery(window).load( function() {
+      jQuery('html, body').animate({
+        scrollTop: $(window.location.hash).offset().top
+      }, 'fast');
+    });
+  }
+</script>
+
+    
+  </div>
+
+  <div id="foot">
+    <table width="100%">
+      <tbody><tr>
+        <td style="vertical-align:middle">
+          <table>
+            <tbody><tr>
+              <td><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de"><img src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/cc-by-sa.svg" alt="cc-by-sa 4.0" style="opacity:0.5" align="top"></a></td>
+              <td>
+                Alle Inhalte dieser Seite unterstehen, soweit nicht anders gekennzeichnet, einer
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de">Creative-Commons-Lizenz</a>.
+                Die Rechte an den angezeigten Bilddigitalisaten, soweit nicht anders gekennzeichnet, liegen bei den besitzenden Bibliotheken.
+                Weitere Informationen finden Sie in den <a href="https://www.deutschestextarchiv.de/doku/nutzungsbedingungen">DTA-Nutzungsbedingungen</a>.
+              </td>
+            </tr>
+          </tbody></table>
+          <p style="max-width:80%">
+            Insbesondere im Hinblick auf die §§ 86a StGB und 130 StGB wird festgestellt, dass die auf
+            diesen Seiten abgebildeten Inhalte weder in irgendeiner Form propagandistischen Zwecken
+            dienen, oder Werbung für verbotene Organisationen oder Vereinigungen darstellen, oder
+            nationalsozialistische Verbrechen leugnen oder verharmlosen, noch zum Zwecke der
+            Herabwürdigung der Menschenwürde gezeigt werden.
+            Die auf diesen Seiten abgebildeten Inhalte (in Wort und Bild) dienen im Sinne des
+            § 86 StGB Abs. 3 ausschließlich historischen, sozial- oder kulturwissenschaftlichen
+            Forschungszwecken. Ihre Veröffentlichung erfolgt in der Absicht, Wissen zur Anregung
+            der intellektuellen Selbstständigkeit und Verantwortungsbereitschaft des Staatsbürgers zu
+            vermitteln und damit der Förderung seiner Mündigkeit zu dienen.
+          </p>
+          <br>
+          <p>
+            2007–2023 Deutsches Textarchiv, Berlin-Brandenburgische Akademie der Wissenschaften.
+            Kontakt: <a href="mailto:redaktion(at)deutschestextarchiv.de">redaktion(at)deutschestextarchiv.de</a>.<br><br>
+            Zitierempfehlung: <i>Deutsches Textarchiv. Grundlage für ein Referenzkorpus der neuhochdeutschen Sprache. Herausgegeben von der Berlin-Brandenburgischen Akademie der Wissenschaften, Berlin 2023. URL: https://www.deutschestextarchiv.de/.</i>
+          </p>
+        </td>
+        <td style="text-align:right">
+          <div style="position:relative">
+            <span style="position:absolute;bottom:10px;right:185px"><a href="https://gepris.dfg.de/gepris/projekt/37149321"><img src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/dfg_logo_schwarz.jpg" style="width:45px;opacity:0.5" alt="DFG-Logo"></a></span>
+            <a href="https://www.bbaw.de/" style="padding-left:15px"><img src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/BBAW_Logo_KLEIN_sw.gif" style="height:80px;opacity:0.7" alt="BBAW-Logo"></a>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+</div>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.deutschestextarchiv.de/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "1"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+<script type="text/javascript" src="./Deutsches Textarchiv – Der Digitalisierungsworkflow im DTA_files/slick.min.js.download"></script>
+
+
+<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul></body></html>
